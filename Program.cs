@@ -18,17 +18,22 @@ namespace MoodAnalzerProblem
             Console.WriteLine("If sad then enter I am in Sad Mood ,If Happy then I am in Happy Mood");
 
             UserMessage = Console.ReadLine();
-
-            result = Check.AnalyseMood(UserMessage);
-            
-
-            if (result = true)
+            try
             {
-                Console.WriteLine("SAD");
+                result = Check.AnalyseMood(UserMessage);
+
+                if (result)
+                {
+                    Console.WriteLine("SAD");
+                }
+                //else
+                //{
+                //    Console.WriteLine("HAPPY");
+                //}
             }
-            else
-            {
-                Console.WriteLine("HAPPY");
+            catch (InvalidMoodExpection e)
+            { 
+                Console.WriteLine(e.Message); 
             }
         }
     }

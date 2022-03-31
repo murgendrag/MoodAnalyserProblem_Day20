@@ -13,8 +13,28 @@ namespace MoodAnalzerProblem
         public static string message2 = "I am in Happy Mood";
         public bool AnalyseMood(string User_message)
         {
-            return Regex.IsMatch(User_message,message1);
+
+            return Regex.IsMatch(User_message, message1);
+
         }
-        
     }
+    public class InvalidMoodExpection:Exception
+    {
+        public InvalidMoodExpection(string message):base(message)
+        { 
+        
+        }
+           
+    }
+    public class TestUserExpection
+    {
+        static void Validate(string message)
+        {
+            if (string.IsNullOrEmpty(message)) ;
+            {
+                throw new InvalidMoodExpection("Invalid mood");
+            }
+        }
+    }
+    
 }
